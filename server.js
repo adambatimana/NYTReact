@@ -9,6 +9,7 @@ let mongoose = require("mongoose");
 // ==================================
 //            Require SCHEMA
 // ==================================
+var Article = require("./models/Article");
 
 // ==================================
 //            Express
