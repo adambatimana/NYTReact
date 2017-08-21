@@ -45,18 +45,19 @@ db.once("open", function () {
 //            ROUTES
 // ==================================
 
-app.get("/", function(req,res) {
+//REACT
+app.get("*", function(req,res) {
     res.sendFile(__dirname + "/public/index.html");
 });
 
 
-app.get("/", function(req,res) {
-    res.sendFile(__dirname + "/public/index.html");
+app.get("/api/saved", function(req,res) {
 });
 
+app.post("/api/saved", function(req,res) {
+});
 
-app.post("/", function(req,res) {
-    res.sendFile(__dirname + "/public/index.html");
+app.delete("/api/saved", function(req,res) {
 });
 
 // ==================================
