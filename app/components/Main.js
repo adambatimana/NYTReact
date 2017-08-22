@@ -6,16 +6,14 @@ import Form from "./children/Form";
 import Search from "./children/Search";
 import Saved from "./children/Saved";
 
-class Main extends Component {
-    constructor(props) {
-        super(props)
-    }
-};
-
 // ==================================
 //            AXIOS for API
 // ==================================
 let axios = require("./utils/helpers");
+
+// ==================================
+//            MAIN REACT
+// ==================================
 
 var Main = React.createClass({
 
