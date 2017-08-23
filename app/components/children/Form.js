@@ -12,31 +12,31 @@ let Form = React.createClass({
                     {
                                 return { term: "" };
                     },
-            handleChange: function(event) 
+            handleChange: function(event)
                     {
 
-                                    this.setState({ term: event.target.value });
+                                    this.setState({ term: event.target.value, start: event.target.sYear , end : event.target.eYear });
 
                     },
-            handleSubmit: function(event) 
+            handleSubmit: function(event)
                     {
-    
+
                                      event.preventDefault();
 
                                     // Set the parent to have the search term
                                     this.props.setTerm(this.state.term);
-                                    this.setState({ term: "" });
+                                    this.setState({ term: "" , start: "", end: "" });
                     },
             render: function() {
                                     return (
-                                                               
+
                                                                     <div className="col l12">
                                                                     <h3>SEARCH CITY</h3>
                                                                     </div>
-                                                                 
+
                                                                     <form onSubmit={this.handleSubmit}>
                                                                         <div className="row">
-                                                                        
+
 
                                                                         {/*
                                                                             Note how each of the form elements has an id that matches the state.
@@ -58,7 +58,7 @@ let Form = React.createClass({
 
                                                                         <div class="input-field col l12">
                                                                                     <input
-                                                                                        value={this.state.term}
+                                                                                        value={this.state.eYear}
                                                                                         type="text"
                                                                                         className="input-field col s6 validate"
                                                                                         id="startYear"
@@ -70,7 +70,7 @@ let Form = React.createClass({
 
                                                                          <div class="input-field col l12">
                                                                                     <input
-                                                                                        value={this.state.term}
+                                                                                        value={this.state.eYear}
                                                                                         type="text"
                                                                                         className="input-field col s6 validate"
                                                                                         id="endYear"
@@ -79,7 +79,7 @@ let Form = React.createClass({
                                                                                     />
                                                                                     <label for="endYear">END YEAR: </label>
                                                                         </div>
-                                                                        
+
                                                                         <br />
                                                                         <button
                                                                             className="btn waves-effect waves-light"
@@ -90,11 +90,10 @@ let Form = React.createClass({
                                                                         </button>
                                                                         </div>
                                                                     </form>
-                                                                 
-                                                               
+
+
                                                                 );
                      }
 });
 
 module.exports = Form;
-
