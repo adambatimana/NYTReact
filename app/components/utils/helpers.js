@@ -4,20 +4,20 @@
 let axios = require("axios");
 
 // ==================================
-//            GEOCODER API
+//            NYT API KEY / URL
 // ==================================
-let geocodeAPI = "35e5548c618555b1a43eb4759d26b260";
+let APIkey= "35e5548c618555b1a43eb4759d26b260";
+let url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
 
 // ==================================
-//            GEOCODER API
-// ==================================
-
+//            NYT  API SEARCH ARTICLES
+ // ==================================
 let helper =
     {
                 runQuery:function(location )
                                     {
                                         console.log (location);
-                                                        let queryURL = "http://api.opencagedata.com/geocode/v1/json?query=" + location + "&pretty=1&key=" + geocodeAPI;
+                                                        let queryURL = url += '?' + $.param({'api-key': APIkey});
                                                         return axios.get(queryURL).then(function(response) {
                                 
                                                             if (response.data.results[0]) {
@@ -30,9 +30,13 @@ let helper =
                                     {
                                           return axios.get("/api")  ;
                                     },
-                postArticle: function(location)
+                postArticle: function(title, date, url)
                                     {
-                                            return axios.post("/api", { location: location});
+                                            return axios.post("/api", { 
+                                                            title: title,
+                                                            date: date,
+                                                            url:url
+                                            });
                                     }
     };
 

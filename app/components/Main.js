@@ -35,7 +35,7 @@ var Main = React.createClass({
   componentDidUpdate: function() {
       axios.runQuery(this.state.searchTerm).then(function(data){
             if(data !== this.state.results){
-                console.log("Address", data);
+                console.log("Searched", data);
                 this.setState({ results : data});
 
 

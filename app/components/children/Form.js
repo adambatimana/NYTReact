@@ -44,16 +44,40 @@ let Form = React.createClass({
                                                                             Also note how each has an onChange event associated with our handleChange event.
                                                                         */}
 
-                                                                         <div class="input-field col s6">
+                                                                         <div class="input-field col l12">
                                                                                     <input
                                                                                         value={this.state.term}
                                                                                         type="text"
                                                                                         className="input-field col s6 validate"
-                                                                                        id="term"
+                                                                                        id="topic"
                                                                                         onChange={this.handleChange}
                                                                                         required
                                                                                     />
-                                                                                    <label for="term">LOCATION: </label>
+                                                                                    <label for="topic">Topic: </label>
+                                                                        </div>
+
+                                                                        <div class="input-field col l12">
+                                                                                    <input
+                                                                                        value={this.state.term}
+                                                                                        type="text"
+                                                                                        className="input-field col s6 validate"
+                                                                                        id="startYear"
+                                                                                        onChange={this.handleChange}
+                                                                                        required
+                                                                                    />
+                                                                                    <label for="startYear">START YEAR: </label>
+                                                                        </div>
+
+                                                                         <div class="input-field col l12">
+                                                                                    <input
+                                                                                        value={this.state.term}
+                                                                                        type="text"
+                                                                                        className="input-field col s6 validate"
+                                                                                        id="endYear"
+                                                                                        onChange={this.handleChange}
+                                                                                        required
+                                                                                    />
+                                                                                    <label for="endYear">END YEAR: </label>
                                                                         </div>
                                                                         
                                                                         <br />
