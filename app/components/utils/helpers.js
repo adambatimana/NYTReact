@@ -7,7 +7,7 @@ let axios = require("axios");
 //            NYT API KEY / URL
 // ==================================
 let APIkey = "35e5548c618555b1a43eb4759d26b260";
-let url = "http://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + authKey;
+let url = "http://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + APIkey;
 
 // ==================================
 //            NYT  API SEARCH ARTICLES

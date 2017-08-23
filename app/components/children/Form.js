@@ -36,10 +36,9 @@ let Form = React.createClass({
   render: function() {
     return (
 
-                <div className="col l12">
+                <div className="col l2">
                   <h3>SEARCH CITY</h3>
-                </div>
-                <form onSubmit = {this.handleSubmit}>
+                 <form onSubmit={this.handleSubmit}>
                       <div className="row">
 
                         {/*
@@ -48,31 +47,31 @@ let Form = React.createClass({
                                 Also note how each has an onChange event associated with our handleChange event.
                         */}
 
-                        <div class="input-field col l12">
+                        <div className="input-field col l12">
                           <input value={this.state.term} type="text" className="input-field col s6 validate" id="term" onChange={this.handleChange} required/>
-                          <label for="topic">Topic:
+                          <label >Topic:
                           </label>
                         </div>
 
-                        <div class="input-field col l12">
+                        <div className="input-field col l12">
                           <input value={this.state.eYear} type="text" className="input-field col s6 validate" id="startYear" onChange={this.handleChange} required/>
-                          <label for="startYear">START YEAR:
+                          <label >START YEAR:
                           </label>
                         </div>
 
-                        <div class="input-field col l12">
+                        <div className="input-field col l12">
                           <input value={this.state.eYear} type="text" className="input-field col s6 validate" id="endYear" onChange={this.handleChange} required/>
-                          <label for="endYear">END YEAR:
+                          <label >END YEAR:
                           </label>
                         </div>
 
                         <br/>
 
                         <button className="btn waves-effect waves-light" type="submit" name="action">Submit</button>
-                        
+
                       </div>
                 </form>
-
+                </div>
               );
                      }
 });
