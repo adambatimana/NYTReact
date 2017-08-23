@@ -8,91 +8,72 @@ let React = require("react");
 // =======================
 let Form = React.createClass({
 
-            getInitialState: function()
-                    {
-                                return { term: "" };
-                    },
-            handleChange: function(event)
-                    {
+  getInitialState: function() {
+    return {term: "", startYear: "", endYear: ""};
+  },
+  handleChange: function(event) {
 
-                                    this.setState({ term: event.target.value, start: event.target.sYear , end : event.target.eYear });
+    this.setState({term: event.target.value});
+    this.setSyear({startYear: event.target.value});
+    this.setEyear({endYear: event.target.value})
 
-                    },
-            handleSubmit: function(event)
-                    {
+  },
+  handleSubmit: function(event) {
 
-                                     event.preventDefault();
+    event.preventDefault();
 
-                                    // Set the parent to have the search term
-                                    this.props.setTerm(this.state.term);
-                                    this.setState({ term: "" , start: "", end: "" });
-                    },
-            render: function() {
-                                    return (
+    // Set the parent to have the search term
+    this.props.setTerm(this.state.term);
+    this.setState({term: ""});
 
-                                                                    <div className="col l12">
-                                                                    <h3>SEARCH CITY</h3>
-                                                                    </div>
+    this.props.setSyear(this.state.startYear);
+    this.setState({startYear: ""});
 
-                                                                    <form onSubmit={this.handleSubmit}>
-                                                                        <div className="row">
+    this.props.setEyear(this.state.endYear);
+    this.setEtate({endYear: ""});
 
+  },
+  render: function() {
+    return (
 
-                                                                        {/*
-                                                                            Note how each of the form elements has an id that matches the state.
-                                                                            This is not necessary but it is convenient.
-                                                                            Also note how each has an onChange event associated with our handleChange event.
-                                                                        */}
+                <div className="col l12">
+                  <h3>SEARCH CITY</h3>
+                </div>
+                <form onSubmit = {this.handleSubmit}>
+                      <div className="row">
 
-                                                                         <div class="input-field col l12">
-                                                                                    <input
-                                                                                        value={this.state.term}
-                                                                                        type="text"
-                                                                                        className="input-field col s6 validate"
-                                                                                        id="topic"
-                                                                                        onChange={this.handleChange}
-                                                                                        required
-                                                                                    />
-                                                                                    <label for="topic">Topic: </label>
-                                                                        </div>
+                        {/*
+                                Note how each of the form elements has an id that matches the state.
+                                This is not necessary but it is convenient.
+                                Also note how each has an onChange event associated with our handleChange event.
+                        */}
 
-                                                                        <div class="input-field col l12">
-                                                                                    <input
-                                                                                        value={this.state.eYear}
-                                                                                        type="text"
-                                                                                        className="input-field col s6 validate"
-                                                                                        id="startYear"
-                                                                                        onChange={this.handleChange}
-                                                                                        required
-                                                                                    />
-                                                                                    <label for="startYear">START YEAR: </label>
-                                                                        </div>
+                        <div class="input-field col l12">
+                          <input value={this.state.term} type="text" className="input-field col s6 validate" id="term" onChange={this.handleChange} required/>
+                          <label for="topic">Topic:
+                          </label>
+                        </div>
 
-                                                                         <div class="input-field col l12">
-                                                                                    <input
-                                                                                        value={this.state.eYear}
-                                                                                        type="text"
-                                                                                        className="input-field col s6 validate"
-                                                                                        id="endYear"
-                                                                                        onChange={this.handleChange}
-                                                                                        required
-                                                                                    />
-                                                                                    <label for="endYear">END YEAR: </label>
-                                                                        </div>
+                        <div class="input-field col l12">
+                          <input value={this.state.eYear} type="text" className="input-field col s6 validate" id="startYear" onChange={this.handleChange} required/>
+                          <label for="startYear">START YEAR:
+                          </label>
+                        </div>
 
-                                                                        <br />
-                                                                        <button
-                                                                            className="btn waves-effect waves-light"
-                                                                            type="submit"
-                                                                            name="action"
-                                                                        >
-                                                                            Submit
-                                                                        </button>
-                                                                        </div>
-                                                                    </form>
+                        <div class="input-field col l12">
+                          <input value={this.state.eYear} type="text" className="input-field col s6 validate" id="endYear" onChange={this.handleChange} required/>
+                          <label for="endYear">END YEAR:
+                          </label>
+                        </div>
 
+                        <br/>
 
-                                                                );
+                        <button className="btn waves-effect waves-light" type="submit" name="action">Submit</button>
+                        
+                      </div>
+                </form>
+
+              );
                      }
 });
 

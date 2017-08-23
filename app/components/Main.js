@@ -1,7 +1,7 @@
 // ==================================
 //            IMPORTS
 // ==================================
-import React, { Component } from "react";
+import React, {Component} from "react";
 import Form from "./children/Form";
 import Search from "./children/Search";
 import Saved from "./children/Saved";
@@ -18,44 +18,51 @@ let axios = require("./utils/helpers");
 var Main = React.createClass({
 
   getInitialState: function() {
-    return { searchTerm: "", results: "", saved: [] };
+    return {searchTerm: "", startYear: "", endYear: "", results: "", saved: []};
   },
 
   // The moment the page renders get the History
   componentDidMount: function() {
-      axios.getArticle().then(function(response){
-            if (response !== this.state.article) {
-                console.log("Article", response.data);
-                this.setState({ article : response.data});
-            }
-      }.bind(this));
+    axios.getArticle().then(function(response) {
+      if (response !== this.state.article) {
+        console.log("Article", response.data);
+        this.setState({article: response.data});
+      }
+    }.bind(this));
   },
 
-  // If the component changes (i.e. if a search is entered)...
+
   componentDidUpdate: function() {
-      axios.runQuery(this.state.searchTerm).then(function(data){
-            if(data !== this.state.results){
-                console.log("Searched", data);
-                this.setState({ results : data});
+    axios.runQuery(this.state.searchTerm, this.state.startYear, this.state.endYear).then(function(data) {
+      if (data !== this.state.results) {
+        console.log("Searched", data);
+        this.setState({results: data});
 
+        // DOES THIS NEED TO SAVE THE WORDS USED IN THE SEARCH OR RESULT OBJECTS ie: TITLE, DATE, URL????
 
-                axios.postArticle(this.state.searchTerm).then(function(){
-                    console.log("UPDATED!");
-                        axios.getArticle().then(function(response){
-                                  console.log("Current Article", response.data);
+        axios.postArticle(this.state.searchTerm).then(function() {
+              console.log("UPDATED!");
+              axios.getArticle().then(function(response) {
+                console.log("Current Article", response.data);
 
-                                  console.log("Article", response.data);
+                console.log("Article", response.data);
 
-                                  this.setState({ article : response.data});
+                this.setState({article: response.data});
 
-                        }.bind(this));
-                  }.bind(this));
-            }//end if
-          }.bind(this));//end axios
+              }.bind(this));
+        }.bind(this));
+      } //end if
+    }.bind(this)); //end axios
   },
   // This function allows childrens to update the parent.
   setTerm: function(term) {
-    this.setState({ searchTerm: term, start: sYear , end :eYear});
+    this.setState({searchTerm: term});
+  },
+  setSyear:function(startYear) {
+    this.setState({ startYear: startYear });
+  },
+  setEyear: function (endYear) {
+    this.setState({ endYear: endYear });
   },
   // Here we render the function
   render: function() {
@@ -65,14 +72,13 @@ var Main = React.createClass({
 
           <div className="col s12">
 
-              <Form setTerm={this.setTerm} />
+            <Form setTerm={this.setTerm} setSyear = {this.setSyear} setEyear = {this.setEyear}/>
 
           </div>
 
-
           <div className="col s12">
 
-              <Search address={this.state.results} />
+            <Search address={this.state.results}/>
 
           </div>
 
@@ -80,9 +86,9 @@ var Main = React.createClass({
 
         <div className="row">
 
-          <div className = "col s12">
+          <div className="col s12">
 
-            <Saved article={this.state.article} />
+            <Saved article={this.state.article}/>
 
           </div>
 
