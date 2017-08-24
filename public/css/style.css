@@ -1,0 +1,17 @@
+.container .row{
+    margin: 0;
+}
+.container {
+    width: 100%;
+}
+.row .col {
+    float:none;
+}
+form{
+    margin-bottom: 2em;
+}
+
+.l6{
+    display: inline-block;
+}
+

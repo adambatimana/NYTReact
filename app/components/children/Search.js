@@ -9,9 +9,9 @@ let React = require("react");
 let Results = React.createClass({
   render: function() {
     return (
-      <div className="card blue-grey darken-1">
+      <div className="card indigo lighten-5">
         <div className="card-content white-text">
-          <span className="card-title">Results</span>
+          <span className="card-title black-text">Results</span>
           <h2>{this.props.title}</h2>
           <p>{this.props.date}</p>
           <p>{this.props.results}</p>

@@ -71,13 +71,13 @@ var Main = React.createClass({
       <div className="container">
         <div className="row">
 
-          <div className="col s12">
+          <div className="col l12">
 
             <Form setTerm={this.setTerm} setSyear = {this.setSyear} setEyear = {this.setEyear}/>
 
           </div>
 
-          <div className="col s12">
+          <div className="col l12">
 
             <Search address={this.state.results}/>
 
@@ -87,7 +87,7 @@ var Main = React.createClass({
 
         <div className="row">
 
-          <div className="col s12">
+          <div className="col l12">
 
             <Saved article={this.state.article}/>
 

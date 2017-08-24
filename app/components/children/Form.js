@@ -27,16 +27,16 @@ let Form = React.createClass({
     this.setState({term: ""});
 
     this.props.setSyear(this.state.startYear);
-    this.setState({startYear: ""});
+    this.setSyear({startYear: ""});
 
     this.props.setEyear(this.state.endYear);
-    this.setEtate({endYear: ""});
+    this.setEyear({endYear: ""});
 
   },
   render: function() {
     return (
 
-                <div className="col l2">
+                <div className="col l12">
                   <h3>SEARCH CITY</h3>
                  <form onSubmit={this.handleSubmit}>
                       <div className="row">
@@ -48,19 +48,19 @@ let Form = React.createClass({
                         */}
 
                         <div className="input-field col l12">
-                          <input value={this.state.term} type="text" className="input-field col s6 validate" id="term" onChange={this.handleChange} required/>
-                          <label >Topic:
+                          <input value={this.state.term} type="text" className="input-field validate" id="term" onChange={this.handleChange} required/>
+                          <label >TOPIC:
                           </label>
                         </div>
 
-                        <div className="input-field col l12">
-                          <input value={this.state.eYear} type="text" className="input-field col s6 validate" id="startYear" onChange={this.handleChange} required/>
+                        <div className="input-field col l6">
+                          <input value={this.state.sYear} type="text" className="input-field col l12 validate" id="startYear" onChange={this.handleChange} required/>
                           <label >START YEAR:
                           </label>
                         </div>
 
-                        <div className="input-field col l12">
-                          <input value={this.state.eYear} type="text" className="input-field col s6 validate" id="endYear" onChange={this.handleChange} required/>
+                        <div className="input-field col l6">
+                          <input value={this.state.eYear} type="text" className="input-field  col l12 validate" id="endYear" onChange={this.handleChange} required/>
                           <label >END YEAR:
                           </label>
                         </div>
