@@ -14,8 +14,8 @@ let Form = React.createClass({
   handleChange: function(event) {
 
     this.setState({term: event.target.value});
-    this.setSyear({startYear: event.target.value});
-    this.setEyear({endYear: event.target.value})
+    // this.setSyear({startYear: });
+    // this.setEyear({endYear: })
 
   },
   handleSubmit: function(event) {
@@ -37,7 +37,7 @@ let Form = React.createClass({
     return (
 
                 <div className="col l12">
-                  <h3>SEARCH CITY</h3>
+                  <h5>SEARCH CITY</h5>
                  <form onSubmit={this.handleSubmit}>
                       <div className="row">
 
