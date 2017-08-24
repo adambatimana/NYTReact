@@ -18,12 +18,13 @@ let axios = require("./utils/helpers");
 var Main = React.createClass({
 
   getInitialState: function() {
-    return {searchTerm: "", startYear: "", endYear: "", results: "", saved: []};
+    return {searchTerm: "", startYear: "", endYear: "", results: "", article: [] };
   },
 
   // The moment the page renders get the History
   componentDidMount: function() {
     axios.getArticle().then(function(response) {
+        console.log(response);
       if (response !== this.state.article) {
         console.log("Article", response.data);
         this.setState({article: response.data});

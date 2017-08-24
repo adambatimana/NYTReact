@@ -1,8 +1,8 @@
 // Include React
-var React = require("react");
+let React = require("react");
 
 // This is the History component. It will be used to show a log of  recent searches.
-var History = React.createClass({
+let Article = React.createClass({
   // Here we describe this component's render method
   render: function() {
     return (
@@ -23,6 +23,6 @@ var History = React.createClass({
     );
   }
 });
+module.exports = Article;
 
-// Export the component back for use in other files
-module.exports = History;
+
