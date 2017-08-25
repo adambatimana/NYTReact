@@ -74,7 +74,8 @@ app.post("/api/saved", function(req,res) {
 
     History.create({
       title: req.body.title,
-      date: Date.now()
+      date: Date.now(),
+      url: req.body.url
     }, function(err) {
       if (err) {
         console.log(err);
@@ -85,7 +86,7 @@ app.post("/api/saved", function(req,res) {
     });
 });
 
-// app.delete("/api/saved", function(req,res) {
+// app.delete("/api/saved/:id, function(req,res) {
 // });
 
 // ==================================

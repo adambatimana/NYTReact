@@ -6,8 +6,8 @@ let axios = require("axios");
 // ==================================
 //            NYT API KEY / URL
 // ==================================
-let APIkey = "35e5548c618555b1a43eb4759d26b260";
-let url = "http://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + APIkey;
+let APIkey = "997b4e44a445477bbf130c731961f844";
+let url = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + APIkey;
 
 // ==================================
 //            NYT  API SEARCH ARTICLES
@@ -17,13 +17,13 @@ let helper = {
     console.log(location);
     let queryURL = url + "&q=" + qTerm + "&begin_date=" + sYear + "&end_date=" + eYear;
     return axios.get(queryURL).then(function(response) {
-
-      if (response.data.results[0]) {
-
-        return response.data.results[0].formatted;
-
-      }
-      return "";
+        console.log(response)
+      // if (response.data.results[0]) {
+      //
+      //   return response.data.results[0].formatted;
+      //
+      // }
+      // return "";
 
     });
   },
