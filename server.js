@@ -54,7 +54,7 @@ app.get("/", function(req,res) {
 
 app.get("/api/saved", function(req,res) {
       Article.find({})
-        .sort([ ["date, descending"] ])
+        .sort({"date": -1})
         .limit(5).exec(function(err,doc)
       {
         if (err)
