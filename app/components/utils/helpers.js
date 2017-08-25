@@ -28,10 +28,10 @@ let helper = {
     });
   },
   getArticle: function() {
-    return axios.get("/api");
+    return axios.get("/api/saved");
   },
   postArticle: function(title, date, url) {
-    return axios.post("/api", {
+    return axios.post("/api/saved", {
       title: title,
       date: date,
       url: url

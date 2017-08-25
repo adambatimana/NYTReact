@@ -47,19 +47,46 @@ db.once("open", function () {
 // ==================================
 
 //REACT
-app.get("*", function(req,res) {
+app.get("/", function(req,res) {
     res.sendFile(__dirname + "/public/index.html");
 });
 
 
 app.get("/api/saved", function(req,res) {
+      Article.find({})
+        .sort([ ["date, descending"] ])
+        .limit(5).exec(function(err,doc)
+      {
+        if (err)
+        {
+          console.log(err);
+        }
+        else {
+          {
+            res.send(doc);
+          }
+        }
+      });
 });
 
 app.post("/api/saved", function(req,res) {
+    console.log("BODY: " + req.body);
+
+    History.create({
+      title: req.body.title,
+      date: Date.now()
+    }, function(err) {
+      if (err) {
+        console.log(err);
+      }
+      else {
+        res.send("Saved Article");
+      }
+    });
 });
 
-app.delete("/api/saved", function(req,res) {
-});
+// app.delete("/api/saved", function(req,res) {
+// });
 
 // ==================================
 //           PORT LISTENER

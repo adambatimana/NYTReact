@@ -14,8 +14,8 @@ let Form = React.createClass({
   handleChange: function(event) {
 
     this.setState({term: event.target.value});
-    // this.setSyear({startYear: });
-    // this.setEyear({endYear: })
+    this.setSyear({startYear: event.target.value });
+    this.setEyear({endYear: event.target.value})
 
   },
   handleSubmit: function(event) {

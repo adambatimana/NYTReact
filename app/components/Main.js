@@ -79,7 +79,7 @@ var Main = React.createClass({
 
           <div className="col l12">
 
-            <Search address={this.state.results}/>
+            <Search Results={this.state.results}/>
 
           </div>
 
