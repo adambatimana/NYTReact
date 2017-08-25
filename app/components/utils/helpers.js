@@ -3,39 +3,46 @@
 // ==================================
 let axios = require("axios");
 
-// ==================================
-//            NYT API KEY / URL
-// ==================================
-let APIkey = "997b4e44a445477bbf130c731961f844";
-let url = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + APIkey;
 
 // ==================================
 //            NYT  API SEARCH ARTICLES
 // ==================================
 let helper = {
   runQuery: function(qTerm, sYear, eYear) {
-    console.log(location);
-    let queryURL = url + "&q=" + qTerm + "&begin_date=" + sYear + "&end_date=" + eYear;
-    return axios.get(queryURL).then(function(response) {
-        console.log(response)
-      // if (response.data.results[0]) {
-      //
-      //   return response.data.results[0].formatted;
-      //
-      // }
-      // return "";
+    console.log("Query Run");
+    var qTerm = qTerm.trim();
+    var sYear = sYear.trim();
+    var eYear = eYear.trim();
 
+
+
+    return axios.get("https://api.nytimes.com/svc/search/v2/articlesearch.json", {
+      params: {
+        "api-key": "997b4e44a445477bbf130c731961f844",
+        "q": qTerm,
+        "begin_date": sYear + "0101",
+        "end_date": eYear + "0101"
+      }
+    })
+    .then(function(results) {
+      console.log("Axios Results", results.data.response.docs);
+      return results.data.response.docs;
     });
   },
+
   getArticle: function() {
-    return axios.get("/api/saved");
+    return axios.get("/api/saved")
+      .then(function(results) {
+        // console.log("axios results: ", results);
+        return results;
+      });
   },
-  postArticle: function(title, date, url) {
-    return axios.post("/api/saved", {
-      title: title,
-      date: date,
-      url: url
-    });
+  postArticle: function() {
+    return axios.post("/api/saved")
+      .then(function(results){
+        return results
+
+      });
   }
 };
 

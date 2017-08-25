@@ -9,7 +9,7 @@ let Article = React.createClass({
       <div className = "card indigo lighten-5">
           <div className = "card-content">
                 <div className = "card-title"> Saved Articles </div>
-      
+
           {/* Here we use a map function to loop through an array in JSX */}
           {this.props.article.map(function(search, i) {
             return (
@@ -26,5 +26,3 @@ let Article = React.createClass({
   }
 });
 module.exports = Article;
-
-

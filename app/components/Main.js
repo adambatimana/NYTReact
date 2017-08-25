@@ -24,7 +24,7 @@ var Main = React.createClass({
   // The moment the page renders get the History
   componentDidMount: function() {
     axios.getArticle().then(function(response) {
-        console.log(response);
+        // console.log(response);
       if (response !== this.state.article) {
         console.log("Article", response.data);
         this.setState({article: response.data});
@@ -45,8 +45,8 @@ var Main = React.createClass({
               console.log("UPDATED!");
               axios.getArticle().then(function(response) {
                 console.log("Current Article", response.data);
-
-                console.log("Article", response.data);
+                //
+                // console.log("Article", response.data);
 
                 this.setState({article: response.data});
 
