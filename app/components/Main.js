@@ -26,7 +26,7 @@ var Main = React.createClass({
     axios.getArticle().then(function(response) {
         // console.log(response);
       if (response !== this.state.article) {
-        console.log("Article", response.data);
+        // console.log("Article", response.data);
         this.setState({article: response.data});
       }
     }.bind(this));
@@ -39,18 +39,16 @@ var Main = React.createClass({
         console.log("Searched", data);
         this.setState({results: data});
 
-        // DOES THIS NEED TO SAVE THE WORDS USED IN THE SEARCH OR RESULT OBJECTS ie: TITLE, DATE, URL????
+        axios.postArticle().then(function() {
+                  console.log("UPDATED!");
+                  axios.getArticle(this.state.results).then(function(response) {
+                        console.log("Current Article", response.data);
 
-        axios.postArticle(this.state.searchTerm).then(function() {
-              console.log("UPDATED!");
-              axios.getArticle().then(function(response) {
-                console.log("Current Article", response.data);
-                //
-                // console.log("Article", response.data);
+                        console.log("Article", response.data);
 
-                this.setState({article: response.data});
+                        this.setState({article: response.data});
 
-              }.bind(this));
+                  }.bind(this));
         }.bind(this));
       } //end if
     }.bind(this)); //end axios

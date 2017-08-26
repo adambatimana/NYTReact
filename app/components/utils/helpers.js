@@ -25,8 +25,8 @@ let helper = {
       }
     })
     .then(function(results) {
-      console.log("Axios Results", results.data.response.docs);
-      return results.data.response.docs;
+      console.log("Axios Results", results.data.response.docs.snippet);
+      return results.data.response.docs.snippet;
     });
   },
 
