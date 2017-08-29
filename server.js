@@ -73,7 +73,7 @@ app.post("/api/saved", function(req,res) {
     console.log("BODY: " + req.body.location);
 
     Article.create({
-      title: req.body.snippet,
+      title: req.body.title,
       date: Date.now(),
       url: req.body.url
     }, function(err) {

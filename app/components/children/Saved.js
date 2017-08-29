@@ -13,7 +13,7 @@ let Article = React.createClass({
           {/* Here we use a map function to loop through an array in JSX */}
           {this.props.article.map(function(search, i) {
             return (
-              <p key={i}>{search.snippet} - {search.date}</p>
+              <p key={i}>{search.title} - {search.date}</p>
             );
           })}
 

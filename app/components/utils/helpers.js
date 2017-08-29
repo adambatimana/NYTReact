@@ -1,3 +1,5 @@
+'use strict'
+
 // ==================================
 //            AXIOS REQ'D
 // ==================================
@@ -14,8 +16,6 @@ let helper = {
     var sYear = sYear.trim();
     var eYear = eYear.trim();
 
-
-
     return axios.get("https://api.nytimes.com/svc/search/v2/articlesearch.json", {
       params: {
         "api-key": "997b4e44a445477bbf130c731961f844",
@@ -25,8 +25,8 @@ let helper = {
       }
     })
     .then(function(results) {
-      console.log("Axios Results", results.data.response.docs.snippet);
-      return results.data.response.docs.snippet;
+      console.log("Axios Results", results.data.response.docs);
+      return results.data.response.docs[0];
     });
   },
 
@@ -37,11 +37,10 @@ let helper = {
         return results;
       });
   },
-  postArticle: function() {
+  postArticle: function(title,date,url) {
     return axios.post("/api/saved")
       .then(function(results){
-        return results
-
+        return results.snippet
       });
   }
 };
