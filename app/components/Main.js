@@ -39,7 +39,7 @@ var Main = React.createClass({
         console.log("Searched", data);
         this.setState({results: data});
 
-        axios.postArticle().then(function() {
+        axios.postArticle(title, date, url).then(function() {
                   console.log("UPDATED!");
                   axios.getArticle(this.state.results).then(function(response) {
                         console.log("Current Article", response.data);
