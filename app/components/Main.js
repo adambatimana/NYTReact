@@ -35,12 +35,12 @@ var Main = React.createClass({
 
   mainSearch: function() {
     console.log(this.state)
-    axios.runQuery("news", this.state.startYear, this.state.endYear).then(function(data) {
+    axios.runQuery(this.state.setTerm, this.state.startYear, this.state.endYear).then(function(data) {
       if (data !== this.state.results) {
         console.log("Searched", data);
         this.setState({results: data});
 
-        axios.postArticle(title, date, url).then(function() {
+        axios.postArticle(this.state.setTerm).then(function() {
                   console.log("UPDATED!");
                   axios.getArticle(this.state.results).then(function(response) {
                         console.log("Current Article", response.data);
@@ -74,7 +74,7 @@ var Main = React.createClass({
           <div className="col l12">
 
             <Form setTerm={this.setTerm} setSyear = {this.setSyear} setEyear = {this.setEyear}
-             sYear={this.state.sYear} eYear={this.state.eYear} />
+             setTerm ={this.state.setTerm} sYear={this.state.sYear} eYear={this.state.eYear} />
              <button  className = "btn waves-effect waves-light" onClick={ () => { this.mainSearch()}}>Search</button>
 
           </div>
@@ -82,7 +82,7 @@ var Main = React.createClass({
           <div className="col l12">
 
             <Search Results={this.state.results}/>
-            
+
 
           </div>
 

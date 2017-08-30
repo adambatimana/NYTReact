@@ -26,7 +26,7 @@ let Form = React.createClass({
     this.props.setEyear(this.state.endYear);
 
 
-    this.setState({term: "", startYear: "", endYear: ""});
+    this.setState({searchterm: "", startYear: "", endYear: ""});
 
 
   },
@@ -38,14 +38,8 @@ let Form = React.createClass({
                  <form onSubmit={this.handleSubmit}>
                       <div className="row">
 
-                        {/*
-                                Note how each of the form elements has an id that matches the state.
-                                This is not necessary but it is convenient.
-                                Also note how each has an onChange event associated with our handleChange event.
-                        */}
-
                         <div className="input-field col l12">
-                          <input  type="text" className="input-field validate" id="term" onChange={this.handleChange} required/>
+                          <input value={this.props.setTerm} type="text" className="input-field validate" id="setTerm" onChange={(e) => {this.props.setTerm(e.currentTarget.value)}} required/>
                           <label>TOPIC:
                           </label>
                         </div>
