@@ -26,7 +26,7 @@ let Form = React.createClass({
     this.props.setEyear(this.state.endYear);
 
 
-    this.setState({searchterm: "", startYear: "", endYear: ""});
+    this.setState({term: "", startYear: "", endYear: ""});
 
 
   },
@@ -39,7 +39,7 @@ let Form = React.createClass({
                       <div className="row">
 
                         <div className="input-field col l12">
-                          <input value={this.props.setTerm} type="text" className="input-field validate" id="setTerm" onChange={(e) => {this.props.setTerm(e.currentTarget.value)}} required/>
+                          <input value={this.props.term} type="text" className="input-field validate" id="term" onChange={(e) => {this.props.setTerm(e.currentTarget.value)}} required/>
                           <label>TOPIC:
                           </label>
                         </div>

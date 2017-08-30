@@ -11,6 +11,7 @@ let axios = require("axios");
 let helper = {
   runQuery: function(qTerm, sYear, eYear) {
     console.log("Query Run");
+    console.log(qTerm);
     console.log(sYear);
     console.log(eYear)
     var qTerm = qTerm.trim();
@@ -24,7 +25,7 @@ let helper = {
         "begin_date": sYear + "0101",
         "end_date": eYear + "0101"
       }
-      
+
     })
     .then(function(results) {
       console.log("Axios Results", results.data.response.docs[0]);

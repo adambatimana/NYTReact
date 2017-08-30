@@ -35,7 +35,7 @@ var Main = React.createClass({
 
   mainSearch: function() {
     console.log(this.state)
-    axios.runQuery(this.state.setTerm, this.state.startYear, this.state.endYear).then(function(data) {
+    axios.runQuery(this.state.searchTerm, this.state.startYear, this.state.endYear).then(function(data) {
       if (data !== this.state.results) {
         console.log("Searched", data);
         this.setState({results: data});
@@ -74,7 +74,7 @@ var Main = React.createClass({
           <div className="col l12">
 
             <Form setTerm={this.setTerm} setSyear = {this.setSyear} setEyear = {this.setEyear}
-             setTerm ={this.state.setTerm} sYear={this.state.sYear} eYear={this.state.eYear} />
+             term ={this.state.term} sYear={this.state.sYear} eYear={this.state.eYear} />
              <button  className = "btn waves-effect waves-light" onClick={ () => { this.mainSearch()}}>Search</button>
 
           </div>
