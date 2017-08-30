@@ -70,10 +70,10 @@ app.get("/api/saved", function(req,res) {
 });
 
 app.post("/api/saved", function(req,res) {
-    console.log("BODY: " + req.body.location);
+    console.log("BODY: " + req.body);
 
     Article.create({
-      title: req.body.title,
+      title: req.body.snippet,
       date: Date.now(),
       url: req.body.url
     }, function(err) {

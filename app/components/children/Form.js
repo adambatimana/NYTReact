@@ -12,11 +12,11 @@ let Form = React.createClass({
   getInitialState: function() {
     return {term: "", startYear: "", endYear: ""};
   },
-  handleChange: function(event) {
+  // handleChange: function(event) {
 
-    this.setState({term: event.target.value , startYear: event.target.value, endYear: event.target.value});
+  //   this.setState({term: event.target.value , startYear: event.target.value, endYear: event.target.value});
 
-  },
+  // },
   handleSubmit: function(event) {
 
     event.preventDefault();
@@ -45,27 +45,26 @@ let Form = React.createClass({
                         */}
 
                         <div className="input-field col l12">
-                          <input value={this.state.setTerm} type="text" className="input-field validate" id="term" onChange={this.handleChange} required/>
+                          <input  type="text" className="input-field validate" id="term" onChange={this.handleChange} required/>
                           <label>TOPIC:
                           </label>
                         </div>
 
                         <div className="input-field col l6">
-                          <input value={this.state.setSyear} type="text" className="input-field col l12 validate" id="startYear" onChange={this.handleChange} required/>
+                          <input value={this.props.sYear} type="text" className="input-field col l12 validate" id="startYear" onChange={(e) => {this.props.setSyear(e.currentTarget.value)}} required/>
                           <label>START YEAR:
                           </label>
                         </div>
 
                         <div className="input-field col l6">
-                          <input value={this.state.setEyear} type="text" className="input-field  col l12 validate" id="endYear" onChange={this.handleChange} required/>
+                          <input value={this.props.eYear} type="text" className="input-field  col l12 validate" id="endYear" onChange={(e) => { this.props.setEyear(e.currentTarget.value)}} required/>
                           <label>END YEAR:
                           </label>
                         </div>
 
                         <br/>
 
-                        <button className="btn waves-effect waves-light" type="submit" name="action">Submit</button>
-
+                         {/* <button className="btn waves-effect waves-light" type="submit" name="action">Submit</button>  */}
                       </div>
                 </form>
                 </div>

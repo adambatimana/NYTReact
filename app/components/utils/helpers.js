@@ -1,4 +1,3 @@
-'use strict'
 
 // ==================================
 //            AXIOS REQ'D
@@ -12,20 +11,23 @@ let axios = require("axios");
 let helper = {
   runQuery: function(qTerm, sYear, eYear) {
     console.log("Query Run");
+    console.log(sYear);
+    console.log(eYear)
     var qTerm = qTerm.trim();
     var sYear = sYear.trim();
     var eYear = eYear.trim();
 
     return axios.get("https://api.nytimes.com/svc/search/v2/articlesearch.json", {
       params: {
-        "api-key": "997b4e44a445477bbf130c731961f844",
+        "api-key": "b9f91d369ff59547cd47b931d8cbc56b:0:74623931",
         "q": qTerm,
         "begin_date": sYear + "0101",
         "end_date": eYear + "0101"
       }
+      
     })
     .then(function(results) {
-      console.log("Axios Results", results.data.response.docs);
+      console.log("Axios Results", results.data.response.docs[0]);
       return results.data.response.docs[0];
     });
   },
@@ -33,14 +35,13 @@ let helper = {
   getArticle: function() {
     return axios.get("/api/saved")
       .then(function(results) {
-        // console.log("axios results: ", results);
         return results;
       });
   },
-  postArticle: function(title,date,url) {
+  postArticle: function() {
     return axios.post("/api/saved")
       .then(function(results){
-        return results.snippet
+        return results;
       });
   }
 };
