@@ -26,32 +26,36 @@ var Main = React.createClass({
     axios.getArticle().then(function(response) {
         // console.log(response);
       if (response !== this.state.article) {
-        // console.log("Article", response.data);
-        this.setState({article: response.data});
+        // console.log("Article", response.url);
+        this.setState({article: response.url});
       }
     }.bind(this));
   },
 
 
   mainSearch: function() {
-    console.log(this.state)
+    console.log("THIS STATE " + this.state)
     axios.runQuery(this.state.searchTerm, this.state.startYear, this.state.endYear).then(function(data) {
-      if (data !== this.state.results) {
-        console.log("Searched", data);
-        this.setState({results: data});
+      // if (data !== this.state.results) {
 
-        axios.postArticle(this.state.setTerm).then(function() {
-                  console.log("UPDATED!");
-                  axios.getArticle(this.state.results).then(function(response) {
-                        console.log("Current Article", response.data);
+          for (var i = 0; i < data.length; i++) {
+            // console.log("Searched", [data[i].snippet, data[i].web_url]);
+            this.setState({results: data[i]});
 
-                        console.log("Article", response.data);
+            // axios.postArticle(data[i].snippet, data[i].web_url ).then(function() {
+            //           console.log("UPDATED!");
+            //           axios.getArticle().then(function(response) {
+            //                 // console.log("Current Article", response.data);
+            //
+            //                 // console.log("Article", response.data);
+            //                 this.setState({article: response.data});
+            //
+            //           }.bind(this));
+            // }.bind(this));
+          }//end loop
 
-                        this.setState({article: response.data});
 
-                  }.bind(this));
-        }.bind(this));
-      } //end if
+      // } //end if
     }.bind(this)); //end axios
   },
   // This function allows childrens to update the parent.
@@ -82,7 +86,6 @@ var Main = React.createClass({
           <div className="col l12">
 
             <Search Results={this.state.results}/>
-
 
           </div>
 

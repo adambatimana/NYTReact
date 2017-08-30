@@ -11,9 +11,9 @@ let axios = require("axios");
 let helper = {
   runQuery: function(qTerm, sYear, eYear) {
     console.log("Query Run");
-    console.log(qTerm);
-    console.log(sYear);
-    console.log(eYear)
+    // console.log(qTerm);
+    // console.log(sYear);
+    // console.log(eYear)
     var qTerm = qTerm.trim();
     var sYear = sYear.trim();
     var eYear = eYear.trim();
@@ -28,22 +28,19 @@ let helper = {
 
     })
     .then(function(results) {
-      console.log("Axios Results", results.data.response.docs[0]);
-      return results.data.response.docs[0];
+      // console.log("Axios Results", results.data.response.docs);
+      return results.data.response.docs;
     });
   },
 
   getArticle: function() {
     return axios.get("/api/saved")
-      .then(function(results) {
-        return results;
-      });
   },
-  postArticle: function() {
-    return axios.post("/api/saved")
-      .then(function(results){
-        return results;
-      });
+  postArticle: function(title,url) {
+    return axios.post("/api/saved" , {
+      title : title,
+      url: url
+    })
   }
 };
 
