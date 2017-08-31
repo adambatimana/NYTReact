@@ -18,7 +18,7 @@ let axios = require("./utils/helpers");
 var Main = React.createClass({
 
   getInitialState: function() {
-    return {searchTerm: "", startYear: "", endYear: "", results: "", article: [] };
+    return {searchTerm: "", startYear: "", endYear: "", results: "", article: []};
   },
 
   // The moment the page renders get the History
@@ -27,7 +27,7 @@ var Main = React.createClass({
         // console.log(response);
       if (response !== this.state.article) {
         // console.log("Article", response.url);
-        this.setState({article: response.url});
+        this.setState({article: response.data});
       }
     }.bind(this));
   },
@@ -36,13 +36,13 @@ var Main = React.createClass({
   mainSearch: function() {
     console.log("THIS STATE " + this.state)
     axios.runQuery(this.state.searchTerm, this.state.startYear, this.state.endYear).then(function(data) {
-      // if (data !== this.state.results) {
-
+      if (data !== this.state.results) {
+          // console.log(data)
           for (var i = 0; i < data.length; i++) {
             // console.log("Searched", [data[i].snippet, data[i].web_url]);
             this.setState({results: data[i]});
 
-            // axios.postArticle(data[i].snippet, data[i].web_url ).then(function() {
+            // axios.postArticle(data[i].snippet, data[i].web_url).then(function() {
             //           console.log("UPDATED!");
             //           axios.getArticle().then(function(response) {
             //                 // console.log("Current Article", response.data);
@@ -55,7 +55,7 @@ var Main = React.createClass({
           }//end loop
 
 
-      // } //end if
+      } //end if
     }.bind(this)); //end axios
   },
   // This function allows childrens to update the parent.
@@ -95,7 +95,7 @@ var Main = React.createClass({
 
           <div className="col l12">
 
-            <Saved article={this.state.article}/>
+            <Saved Article={this.state.article}/>
 
           </div>
 
